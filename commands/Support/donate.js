@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
    var DAD = new Discord.RichEmbed()
       .setDescription('Please donate to https://www.patreon.com/vampymaria to keep the bot up and running!')
 
-      .setColor("0x#FF0000")
+      .setColor("#f7d4f1")
 
       message.channel.send(DAD);
   }

@@ -4,10 +4,10 @@ const send = require("quick.hook");
 
 module.exports.run = async (client, message, args) => {
     let {body} = await superagent
-    .get(`https://some-random-api.ml/pikachuimg`);
+    .get(process.env.PIKA);
 
     let hugembed = new Discord.RichEmbed()
-    .setColor("#ff9900")
+    .setColor("#f7d4f1")
     .setImage(body.link);
 
     message.channel.send(hugembed);

@@ -7,7 +7,11 @@ module.exports.run = async (client, msg, args) => {
         const { body } = await superagent
             .get('https://randomfox.ca/floof/')
             
-        return msg.channel.send({ files: [body.image] });
+            let foxembed = new Discord.RichEmbed()
+            .setColor("#f7d4f1")
+            .setImage(body.image)
+
+        return msg.channel.send(foxembed);
     } catch (err) {
         return msg.channel.send(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
     }

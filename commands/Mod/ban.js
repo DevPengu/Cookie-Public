@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 
     let banEmbed = new Discord.RichEmbed()
     .setDescription("~Ban~")
-    .setColor("#bc0000")
+    .setColor("#F7D4F1")
     .addField("Banned User", `${bUser} with ID ${bUser.id}`)
     .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
     .addField("Banned In", message.channel)

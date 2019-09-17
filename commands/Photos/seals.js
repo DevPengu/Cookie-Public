@@ -3,12 +3,12 @@ const fetch = require("node-fetch");
 const send = require("quick.hook");
 
 module.exports.run = async (client, message, args) => {
-    fetch("https://apis.duncte123.me/seal")
+    fetch(process.env.DUNC + "seal")
     .then(res => res.json()).then(body => {
         if(!body) return message.reply(" whoops. I broke, try again!")
 
     let hugembed = new Discord.RichEmbed()
-    .setColor("#ff9900")
+    .setColor("#f7d4f1")
     .setImage(body.data.file);
 
     message.channel.send(hugembed);

@@ -5,10 +5,10 @@ const send = require("quick.hook");
 module.exports.run = async (bot, message, args) => {
 
     let {body} = await superagent
-    .get(`https://nekos.life/api/v2/img/holo`);
+    .get(process.env.NEKOLIFE + `holo`);
 
     let holoembed = new Discord.RichEmbed()
-    .setColor("#ff9900")
+    .setColor("#f7d4f1")
     .setImage(body.url);
 
     message.channel.send(holoembed);

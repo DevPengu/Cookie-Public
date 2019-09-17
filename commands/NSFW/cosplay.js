@@ -16,14 +16,14 @@ exports.run = (client, message, args) => {
 
     randomPuppy(sub)
         .then(url => {
-            request.get(url).then(r => {
-                fs.writeFile(`cosplay.jpg`, r.body)
-                       message.channel.send({files: [r.body]})
-                fs.unlink(`./cosplay.jpg`)
+                let cosplayembed = new Discord.RichEmbed()
+                .setColor("#f7d4f1")
+                .setImage(url)
+                message.channel.send(cosplayembed)
             })
-        })
-}
+        }
 
+        
 module.exports.help = {   
   name: "cosplay",   
   description: "Nani?",

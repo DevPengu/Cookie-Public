@@ -15,6 +15,7 @@ let search = args[1] ? urban(args.slice(1).join(" ")) : urban.random();
                 let embed = new RichEmbed()
                     .setAuthor(`Urban Dictionary | ${word}`, image)
                     .setThumbnail(image)
+                    .setColor("#f7d4f1")
                     .setDescription(stripIndents`**Defintion:** ${definition || "No definition"}
                     **Example:** ${example || "No Example"}
                     **Upvote:** ${thumbs_up || 0}

@@ -31,11 +31,11 @@ module.exports.run = async (client, message, args) => {
       .setTitle("Leaderboard")
     //if there are no results
     if (res.length === 0) {
-      embed.setColor("RED");
+      embed.setColor("#f7d4f1");
       embed.addField(`No data found`, `Please type in chat to gain coins and xp! Or try ${settings.prefix}daily!`)
     } else if (res.length < 10) {
       //less than 10 results
-      embed.setColor("BLURPLE");
+      embed.setColor("#f7d4f1");
       for (i = 0; i < res.length; i++) {
         let member = message.guild.members.get(res[i].userID) || "User Left"
         if (member === "User Left") {
@@ -46,7 +46,7 @@ module.exports.run = async (client, message, args) => {
       }
     } else {
       //more than 10 results
-      embed.setColor("BLURPLE");
+      embed.setColor("#f7d4f1");
       for (i = 0; i < 10; i++) {
         let member = message.guild.members.get(res[i].userID) || "User Left"
         if (member === "User Left") {

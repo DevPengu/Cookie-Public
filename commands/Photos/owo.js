@@ -4,10 +4,10 @@ const send = require("quick.hook");
 
 module.exports.run = async (bot, message, args) => {
   let {body} = await superagent
-    .get(`https://rra.ram.moe/i/r?type=owo`);
+    .get(process.env.RRA + `owo`);
 
     let hentaiEmbed = new Discord.RichEmbed()
-    .setColor("#ff0000")
+    .setColor("#f7d4f1")
     .setImage("https://rra.ram.moe" + body.path)
 
 

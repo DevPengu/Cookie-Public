@@ -7,7 +7,7 @@ let guildammount = guild.members.size
 let name = guild.name
 let owner = guild.owner.user.tag
 let totalrole = guild.roles.size
-let totaltext = guild.channels.size
+let totaltext = guild.channels.filter(channel => channel.type !== 'category').size
 let region = guild.region
 let verify = guild.verificationLevel
 let guildid = guild.id
@@ -15,7 +15,7 @@ let ownerid = guild.owner.id
 
 
 const embed = new Discord.RichEmbed()
-.setColor(871614)
+.setColor(15848695)
 .setTitle("Server Info")
 .addField("Server Name", name)
 .addField('Owner', owner)

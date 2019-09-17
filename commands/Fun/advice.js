@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
 try {
     const { text } = await superagent
-    .get('http://api.adviceslip.com/advice');
+    .get(process.env.ADVICE);
     const body = JSON.parse(text);
     return message.channel.send(`${body.slip.advice}`);
 } catch (err) {

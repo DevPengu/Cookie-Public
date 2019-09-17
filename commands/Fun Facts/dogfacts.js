@@ -5,7 +5,7 @@ const send = require("quick.hook");
 module.exports.run = async (client, msg, args) => {
     try {
         const { text } = await superagent
-    .get('https://some-random-api.ml/facts/dog');
+    .get(process.env.FACTS + 'dog');
         const body = JSON.parse(text);
         return msg.channel.send(`${body.fact}`);
     } catch (err) {

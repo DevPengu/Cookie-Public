@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
   if(err) console.log(err);
 
     let embed = new Discord.RichEmbed()
-    .setColor("#FF00FF");  
+    .setColor("#f7d4f1");  
  if(!Xp) {
    embed.addField("Rip, you have no xp. Keep chatting!", "0", true);
    return message.channel.send(embed);

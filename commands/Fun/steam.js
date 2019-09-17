@@ -28,6 +28,7 @@ fetch(bans).then(res => res.json()).then(body => {
     const embed = new RichEmbed()
         .setAuthor(`Steam Services | ${personaname}`, avatarfull)
         .setThumbnail(avatarfull)
+        .setColor("#f7d4f1")
         .setDescription(stripIndents`**Real Name:** ${realname || "Unknown"}
         **Status:** ${state[personastate]}
         **Country:** :flag_${loccountrycode ? loccountrycode.toLowerCase() : "white"}:

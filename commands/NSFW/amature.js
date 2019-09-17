@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
     var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
     randomPuppy(sub).then(url => {
     let embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
+    .setColor("#F7D4F1")
     .setImage(url)
     message.channel.send(embed)
             })

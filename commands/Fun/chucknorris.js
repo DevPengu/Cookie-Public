@@ -5,7 +5,7 @@ const send = require("quick.hook");
 module.exports.run = async (client, message, args) => {
     try {
         const { body } = await superagent
-        .get('http://api.icndb.com/jokes/random')
+        .get(process.env.CHUCK)
         .query({
             escape: 'javascript'
         });

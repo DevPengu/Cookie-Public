@@ -1,6 +1,4 @@
 const Discord = require('discord.js');
-const { readdirSync } = require("fs")
-const { stripIndents } = require("common-tags")
 
 
 
@@ -15,6 +13,7 @@ let embed = new Discord.RichEmbed()
   
         .setAuthor("Bot Help", bot.user.avatarURL)
         .setDescription(`Command Help.\n`)
+        .setColor("#f7d4f1")
         .addField("Fun", `${bot.commands.filter(cmd => cmd.help.module === 'Fun').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
         .addField("Config", `${bot.commands.filter(cmd => cmd.help.module === 'Config').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
         .addField("Fun Facts", `${bot.commands.filter(cmd => cmd.help.module === 'Fun Facts').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)

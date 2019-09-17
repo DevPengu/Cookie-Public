@@ -5,10 +5,10 @@ const send = require("quick.hook");
 module.exports.run = async (bot, message, args) => {
     let user = message.mentions.users.first() || message.author;
     let {body} = await superagent
-    .get(`random.dog/woof.json`);
+    .get(process.env.WOOF);
 
     let dogEmbed = new Discord.RichEmbed()
-    .setColor("#ff9900")
+    .setColor("#f7d4f1")
     .setDescription(`Here's your puppo! :heart:`)
     .setImage(body.url);
 

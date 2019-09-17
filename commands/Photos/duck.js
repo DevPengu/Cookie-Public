@@ -5,9 +5,13 @@ const send = require("quick.hook");
 module.exports.run = async (client, msg, args) => {
     try {
         const { body } = await superagent
-            .get('https://random-d.uk/api/v1/random')
+            .get(process.env.DUCK)
 
-        return msg.channel.send({ files: [body.url] });
+            let duckembed = new Discord.RichEmbed()
+            .setColor("#f7d4f1")
+            .setImage(body.url)
+
+        return msg.channel.send(duckembed)
     } catch (err) {
         return msg.channel.send(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
     }

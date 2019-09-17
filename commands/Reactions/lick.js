@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const superagent = require("superagent");
 const send = require("quick.hook");
-const talkedRecently = new Set();
+require('dotenv-flow')
 
 module.exports.run = async (bot, message, args) => {
   let user = message.mentions.members.first();
@@ -9,12 +9,12 @@ module.exports.run = async (bot, message, args) => {
   if(user.id == message.author.id) return message.channel.send("You can't lick yourself ... Well you can but I don't need to know about that 🤢");
   
     let {body} = await superagent
-    .get(`https://rra.ram.moe/i/r?type=lick`);
+    .get(process.env.RRA + `lick`);
 
     let hentaiEmbed = new Discord.RichEmbed()
     .setDescription(`<@${message.author.id}> has licked ${user}`)
-    .setColor("#ff0000")
-    .setImage("https://rra.ram.moe" + body.path)
+    .setColor("#f7d4f1")
+    .setImage(process.env.RRA2 + body.path)
 
 
 

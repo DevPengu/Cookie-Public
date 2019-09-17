@@ -10,7 +10,7 @@ let question = args.slice(0).join(" ");
   
 let ballembed = new Discord.RichEmbed()
 .setAuthor(message.author.tag)
-.setColor("#FF00FF")
+.setColor("#f7d4f1")
 .addField("Question", question)
 .addField("Answer", replies[result]);
 

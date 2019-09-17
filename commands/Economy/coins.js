@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
   if(err) console.log(err);
     
     let embed = new Discord.RichEmbed()
-    .setColor("#FF00FF")
+    .setColor("#f7d4f1")
               
     
     

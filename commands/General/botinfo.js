@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
     let owner = "VampyMaria#4980, <@330528293843632130>"
     let embed = new Discord.RichEmbed()
     .setDescription(`Here is some bot information`)
-    .setColor(`#FF00FF`)
+    .setColor(`#f7d4f1`)
     .addField("Bot Owner:", owner, true)
     .addField("Developers:", ("<@330528293843632130>"), true)
     .addField("Servers:", bot.guilds.size, true)
