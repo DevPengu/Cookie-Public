@@ -1,5 +1,12 @@
 exports.run = async (client, guild) => {
 
+
+    const fetched = await guild.fetchMembers()
+if (20 > fetched.size && fetched.filter(m => m.user.bot).size > fetched.filter(m => !m.user.bot).size) { 
+message.guild.leave() 
+}
+
+
     const newGuild = {
         guildID: guild.id,
         guildName: guild.name,

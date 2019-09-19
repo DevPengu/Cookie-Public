@@ -10,7 +10,7 @@ exports.run = async(client, message) => {
     let dmembed = new Discord.RichEmbed()
     .setTitle(`New DM message!`)
     .setDescription(`Sent by: ${message.author.username}${message.author.discriminator}`)
-    .addField(`${message.content}`, `Test`)
+    .addField(`Message`, `${message.content}`)
     .setFooter(`Message sent at: ${message.createdAt}`)
     const channel = server.channels.find(c => c.name === authorid);
     if(channel){
@@ -18,7 +18,7 @@ exports.run = async(client, message) => {
     }else{
     server.createChannel(authorid, "text").then(newchannel => newchannel.send(dmembed));
     }
-    message.reply("Thank you! We will look into this! If this is a valid support ticket we will try to contact you for more information. Please join the support server for more information about this process. ***__PLEASE DO NOT ATTEMPT COMMANDS IN DMS!__*** All dms are registered as tickets and viewed by the bot creators.").then(message => message.delete(10000))
+    return;
     }
 
 
