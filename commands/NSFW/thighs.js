@@ -1,5 +1,5 @@
     
-const discord = require('discord.js');
+const Discord = require('discord.js');
 const superagent = require('superagent')
 
 exports.run = (client, message, args) => {
