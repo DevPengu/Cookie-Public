@@ -18,7 +18,7 @@ exports.run = async(client, message) => {
     }else{
     server.createChannel(authorid, "text").then(newchannel => newchannel.send(dmembed));
     }
-    return;
+    return; 
     }
 
 
