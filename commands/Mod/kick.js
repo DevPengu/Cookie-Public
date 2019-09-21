@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     let botRole = message.guild.members.get(client.user.id).highestRole;
     let userRole = message.guild.members.get(kUser.id).highestRole;
     let kReason = args.slice(1).join(" ") || "No reason";
-    if(!message.member.hasPermission("KICK_MEMBERS")) return errors.noPerms(message, "KICK_MEMBERS");
+    if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Nope! You can't do that!");
     if(botRole.position < userRole.position) return message.channel.send("My role must be higher than user's role!");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be banned!");
 
@@ -19,8 +19,8 @@ module.exports.run = async (client, message, args) => {
     .addField("Time", message.createdAt)
     .addField("Reason", kReason);
 
-    let incidentchannel = message.guild.channels.find(`name`, "mod-log");
-    if(!incidentchannel) return message.channel.send("Can't find channel named 'mod-log'.");
+    let incidentchannel = message.guild.channels.find(settings.modLog);
+    if(!incidentchannel) return message.channel.send("Cannot find your modLog in my settings! Please set one!");
 
     message.guild.member(kUser).kick(kReason);
     incidentchannel.send(kickEmbed);
