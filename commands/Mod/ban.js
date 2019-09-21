@@ -12,12 +12,19 @@ module.exports.run = async (client, message, args) => {
 
 
 
+  
   let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("Can't find user!");
-    let bReason = args.slice(1).join(" ") || "No reason"
-      if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Nope! You can't do that!")
-    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be banned!");
+  if(!bUser) return message.channel.send("Can't find user!");
+  let botRole = message.guild.members.get(client.user.id).highestRole;
+  let userRole = message.guild.members.get(bUser.id).highestRole;
+  let bReason = args.slice(1).join(" ") || "No reason";
+  if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Nope! You can't do that!");
+  if(botRole.position < userRole.position) return message.channel.send("My role must be higher than user's role!");
+  if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be banned!");
 
+
+
+  
     let banEmbed = new Discord.RichEmbed()
     .setDescription("~Ban~")
     .setColor("#F7D4F1")

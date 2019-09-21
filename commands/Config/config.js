@@ -84,9 +84,23 @@ exports.run = async (client, message, args, settings) => {
          
             break;
         }
+
+    case 'modLog': {
+
+        const channel = message.mentions.channels.first();
+        if (!channel) return message.channel.send(`Please mention a channel, ${message.author}`);
+
+        if (channel) {
+            await client.updateGuild(message.guild, {
+                modLog: channel.name});
+                return message.channel.send(`Welcome channel has been set to ${channel}`).catch(e => console.log(e));
+        }
+    message.channel.send(`Current welcome channel: ${settings.modLog ? `<#settings.modLog>` : "None"}`);
+        break;
+    }
         default: {
 
-            const { welcomeChannel, welcomeMsg, modRole, adminRole, prefix } = settings;
+            const { welcomeChannel, welcomeMsg, modRole, adminRole, prefix, modLog } = settings;
             const embed = new RichEmbed()
             .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL)
             .setFooter(`${client.user.tag}`, client.user.displayAvatarURL)
@@ -96,6 +110,7 @@ exports.run = async (client, message, args, settings) => {
             .addField("❯ Mod Role:", `${modRole ? `<@&${modRole}>`: client.config.defaultSettings.modRole}`)
             .addField("❯ Admin Role:", `${adminRole ? `<@&${adminRole}>`: client.config.defaultSettings.adminRole}`)
             .addField("❯ Prefix:", `${prefix ? `${prefix}`: client.config.prefix}`)
+            .addField("❯ Mod Log:", `${modLog ? `<#modLog>`: "Not Set"}`)
             .setThumbnail(message.guild.iconURL)
             .setTimestamp();
             message.channel.send(embed);

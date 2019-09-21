@@ -78,7 +78,6 @@ module.exports.run = async (client, message, args) => {
   .setThumbnail('attachment://pokemon.png')
   
   await message.channel.send(embed);
-  fs.unlink(`./pokemon.png`);
   });
 
 }

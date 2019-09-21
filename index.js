@@ -25,11 +25,10 @@
     });
     
     // Run the command loader
-    ["command, event"].forEach(handler => {
+    ["command", "event"].forEach(handler => {
         require(`./handlers/${handler}`)(client);
     });
+
     
-
-
 client.mongoose.init();
 client.login();

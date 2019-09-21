@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     .setDescription(`Here is some bot information`)
     .setColor(`#f7d4f1`)
     .addField("Bot Owner:", owner, true)
-    .addField("Developers:", ("<@330528293843632130>"), true)
+    .addField("Developers:", ("<@330528293843632130>, <@297395255467048960>"), true)
     .addField("Servers:", bot.guilds.size, true)
     .addField("Created on:", bot.user.createdAt.toDateString(), true)
     .addField("Bot Commands:", bot.commands.size, true)
