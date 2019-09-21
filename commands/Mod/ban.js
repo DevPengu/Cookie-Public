@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     let botRole = message.guild.members.get(client.user.id).highestRole;
     let userRole = message.guild.members.get(bUser.id).highestRole;
     let bReason = args.slice(1).join(" ") || "No reason";
-    if(!message.member.hasPermission("MANAGE_MEMBERS")) return errors.noPerms(message, "MANAGE_MEMBERS");
+    if(!message.member.hasPermission("BAN_MEMBERS")) return errors.noPerms(message, "BAN_MEMBERS");
     if(botRole.position < userRole.position) return message.channel.send("My role must be higher than user's role!");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be banned!");
 
