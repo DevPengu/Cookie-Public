@@ -7,9 +7,7 @@ module.exports.run = async (client, message, args) => {
   if (!money) {
     new Money({
       userID: message.author.id,
-      username: message.author.username,
       guildID: message.guild.id,
-      guildName: message.guild.name,
       money: coinsToAdd,
       cooldown: Date.now() + 86400000,
     }).save().catch((err) => console.error(err));

@@ -25,9 +25,7 @@ exports.run = async (client) => {
       const guild = client.guilds.get(guilds[i]);
       const newGuild = {
         guildID: guild.id,
-        guildName: guild.name,
         ownerID: guild.ownerID,
-        ownerUsername: guild.owner.user.tag,
       };
 
       await client.createGuild(newGuild);
