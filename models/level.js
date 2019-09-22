@@ -1,12 +1,12 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose');
 
 const levelSchema = mongoose.Schema({
   userID: String,
-  guildID: String, 
-  guildName: String,  
+  guildID: String,
+  guildName: String,
   username: String,
   xp: Number,
-  level: Number
-})
+  level: Number,
+});
 
-module.exports = mongoose.model("level", levelSchema);
+module.exports = mongoose.model('level', levelSchema);
