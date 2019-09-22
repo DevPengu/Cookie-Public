@@ -17,7 +17,7 @@ module.exports = (client) => {
       else return;
     }
 
-    console.log(`Guild "${data.guildName}" updated settings: ${Object.keys(settings)}`);
+    console.log(`Guild "${data.guildID}" updated settings: ${Object.keys(settings)}`);
     return await data.updateOne(settings);
   };
 
@@ -27,7 +27,7 @@ module.exports = (client) => {
 
     const newGuild = await new Guild(merged);
     return newGuild.save()
-      .then(console.log(`Default settings saved for guild "${merged.guildName}" (${merged.guildID})`));
+      .then(console.log(`Default settings saved for guild (${merged.guildID})`));
   };
 
   client.clean = (text) => {

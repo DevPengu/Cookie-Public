@@ -1,5 +1,3 @@
-/* eslint-disable object-curly-newline */
-// TODO: This rewrite probably
 const { RichEmbed } = require('discord.js');
 
 exports.run = async (client, message, args, settings) => {
