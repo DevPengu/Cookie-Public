@@ -1,23 +1,18 @@
 exports.run = async (client, guild) => {
-
-
-    const fetched = await guild.fetchMembers()
-if (20 > fetched.size && fetched.filter(m => m.user.bot).size > fetched.filter(m => !m.user.bot).size) { 
-message.guild.leave() 
-}
-
-
-    const newGuild = {
-        guildID: guild.id,
-        guildName: guild.name,
-        ownerID: guild.ownerID,
-        ownerUsername: guild.owner.user.tag
-    };
-
-    try {
-        await client.createGuild(newGuild);
-    } catch (error) {
-        console.error(error);
+  try {
+    const fetched = await guild.fetchMembers();
+    if (fetched.size < 20 && fetched.filter((m) => m.user.bot).size > fetched.filter((m) => !m.user.bot).size) {
+      guild.leave();
+      return;
     }
 
+    const newGuild = {
+      guildID: guild.id,
+      ownerID: guild.ownerID,
+    };
+
+    await client.createGuild(newGuild);
+  } catch (error) {
+    console.error(error);
+  }
 };

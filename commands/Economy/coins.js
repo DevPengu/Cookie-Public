@@ -1,60 +1,21 @@
+const Discord = require('discord.js');
+const { Money } = require('../../models');
 
-const Discord = require("discord.js")
-const mongoose = require("../../utils/mongoose")
+module.exports.run = async (client, message, args, settings) => {
+  const embed = new Discord.RichEmbed()
+    .setColor('#f7d4f1');
 
-const Money = require('../../models/money.js')
-
-module.exports.run = async (client, message, args) => {
-
-  
-  let settings;
-  try {
-      settings = await client.getGuild(message.guild);
-  } catch (error) {
-      console.error(error);
+  const userMoney = await Money.findOne({ userID: message.author.id, guildID: message.guild.id });
+  if (!userMoney) {
+    embed.addField(`Rip, you have no coins. Try ${settings.prefix}daily! `, '0', true);
+    return message.channel.send(embed);
   }
-
-  //code command
-  Money.findOne({
-    userID: message.author.id,
-    username: message.author.username,
-    guildID: message.guild.id,
-    guildName: message.guild.name
-  },
-                
-  (err, Money) => {
-  if(err) console.log(err);
-    
-    let embed = new Discord.RichEmbed()
-    .setColor("#f7d4f1")
-              
-    
-    
-    
- if(!Money) {
-   embed.addField(`Rip, you have no coins. Try ${settings.prefix}daily! `, "0", true);
-   return message.channel.send(embed);
-   
-     // const newMoney = new Money({
-      //userID: message.author.id, 
-     // serverID: message.guild.id,
-        //money: coinstoadd
-      //})
-      
-      //newMoney.save().catch(err => console.log(err));
-      }else{
-        embed.addField("Your current balance is", Money.money, true)
-        return message.channel.send(embed);
-      //Money.money = Money.money + coinstoadd;
-       // Money.save().catch(err => console.log(err));
-      
-      
-      }
-  })
-}
+  embed.addField('Your current balance is', Money.money, true);
+  return message.channel.send(embed);
+};
 
 module.exports.help = {
-   name: "coins",
-  description: "Tells how many coins you have! :D",
-  module: "Economy"
-}
+  name: 'coins',
+  description: 'Tells how many coins you have! :D',
+  module: 'Economy',
+};

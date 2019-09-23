@@ -49,4 +49,3 @@ module.exports.run = async (client, message, args) => {
     description: "It's a ban command xD",
     module: "Mod"
   }
-  

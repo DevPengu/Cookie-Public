@@ -1,34 +1,29 @@
-    const { Client, Collection } = require('discord.js');
-    const fs = require('fs');
-    require('dotenv-flow').config();
-    
-    const client = new Client({
-        disableEveryone: true
-    })
-    
-    require('./utils/functions')(client);
+const { Client, Collection } = require('discord.js');
+require('dotenv-flow').config();
 
-    client.mongoose = require('./utils/mongoose');
-    client.config = require('./config.js');
+const client = new Client({
+  disableEveryone: true,
+});
+
+require('./utils/functions')(client);
+require('./utils/mongoose').init();
+
+client.config = require('./config.js');
+
+const { config } = require('dotenv-flow');
 
 
-    const { config } = require("dotenv-flow");
+// Collections
+client.commands = new Collection();
+client.aliases = new Collection();
 
-  
-    
-    // Collections
-    client.commands = new Collection();
-    client.aliases = new Collection();
-    
-    config({
-        path: __dirname + "/.env"
-    });
-    
-    // Run the command loader
-    ["command", "event"].forEach(handler => {
-        require(`./handlers/${handler}`)(client);
-    });
+config({
+  path: `${__dirname}/.env`,
+});
 
-    
-client.mongoose.init();
+// Run the command loader
+['command', 'event'].forEach((handler) => {
+  require(`./handlers/${handler}`)(client);
+});
+
 client.login();
