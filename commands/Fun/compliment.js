@@ -1,4 +1,4 @@
-const facts = require('../../assets/compliment.json')
+const facts = require('../../assets/json/compliment.json')
 const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
