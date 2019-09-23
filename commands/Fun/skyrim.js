@@ -1,4 +1,4 @@
-const facts = require('../../assets/skyrim.json')
+const facts = require('../../assets/json/skyrim.json')
 
 
 exports.run = (client, message, args) => { 

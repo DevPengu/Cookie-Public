@@ -1,4 +1,4 @@
-const facts = require('../../assets/insult.json')
+const facts = require('../../assets/json/insult.json')
 module.exports.run = async (bot, message, args) => {
 
 

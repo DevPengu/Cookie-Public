@@ -1,4 +1,4 @@
-const facts = require('../../assets/internetrules.json')
+const facts = require('../../assets/json/internetrules.json')
 
 
 exports.run = (client, message, args) => { 

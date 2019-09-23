@@ -1,4 +1,4 @@
-const facts = require('../../assets/dadjokes.json')
+const facts = require('../../assets/json/dadjokes.json')
 
 
 exports.run = (client, message, args) => { 
