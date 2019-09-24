@@ -57,6 +57,7 @@ exports.run = async (client, message) => {
       }
     });
   }
+  
 
   // LEVEL CODING
   const xpToAdd = 1;

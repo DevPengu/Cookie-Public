@@ -9,9 +9,16 @@ exports.run = async (client) => {
     dbl.postStats(client.guilds.size);
   }, 1800000);
 
+
+  const { Level } = require('../models');
+  const test = await Level.updateMany({}, { xpToLevel: 100 });
+  console.log(test);
+
   // Checks if any guilds added the bot while it was offline and if so then add them to the DB
   const guilds = client.guilds.map((g) => g.id);
-  const dbGuilds = await Guild.find({}).map((g) => g.guildID);
+  let dbGuilds = await Guild.find({});
+  dbGuilds = dbGuilds.map((g) => g.guildID);
+
 
   for (let i = 0; i < guilds.length; i++) {
     let found = false;
