@@ -31,11 +31,20 @@ module.exports = (client) => {
   };
 
   client.createProfile = async (settings) => {
-    const defaults = { money: 1, cooldown: 0, xp: 1, level: 1, xpToLevel: 100 };
+    const defaults = {
+      money: 1, cooldown: 0, xp: 1, level: 1, xpToLevel: 100,
+    };
     const merged = Object.assign(defaults, settings);
 
     const newProfile = await new Profile(merged);
     return newProfile.save();
+  };
+  
+  client.getProfile = async (member) => {
+    const data = await Profile.findOne({ userID: member.user.id, guildID: member.guild.id });
+    if (data) return data;
+    const newProfile = await this.createProfile({ userID: member.user.id, guildID: member.guild.id });
+    return newProfile;
   };
 
   client.clean = (text) => {
