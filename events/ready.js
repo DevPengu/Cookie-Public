@@ -36,7 +36,7 @@ exports.run = async (client) => {
 
   // USE ONCE to merge Money and Level into Profile
   /*
-  const { Level, Money } = require('../models');
+  const { Level, Money, Profile } = require('../models');
   const testLevel = await Level.find({});
   const testMoney = await Money.find({});
 
@@ -46,11 +46,11 @@ exports.run = async (client) => {
         new Profile({
           userID: testMoney[i].userID,
           guildID: testMoney[i].guildID,
-          money: testMoney[i].money,
-          cooldown: testMoney[i].cooldown,
-          level: testLevel[i].level,
-          xp: testLevel[i].xp,
-          xpToLevel: testLevel[i].xpToLevel,
+          money: testMoney[i].money || 1,
+          cooldown: testMoney[i].cooldown || 0,
+          level: testLevel[i].level || 1,
+          xp: testLevel[i].xp || 1,
+          xpToLevel: testLevel[i].xpToLevel || 100,
         }).save().catch((err) => console.error(err));
         break;
       }

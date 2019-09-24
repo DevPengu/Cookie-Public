@@ -6,18 +6,17 @@ exports.run = async (client, message) => {
     if (message.author.bot) return;
 
     if (message.channel.type === 'dm') {
-      const authorid = message.author.id;
       const server = client.guilds.get('513056225047609344');
       const dmembed = new Discord.RichEmbed()
         .setTitle('New DM message!')
-        .setDescription(`Sent by: ${message.author.username}${message.author.discriminator}`)
+        .setDescription(`Sent by: ${message.author.tag}`)
         .addField('Message', `${message.content}`)
         .setFooter(`Message sent at: ${message.createdAt}`);
-      const channel = server.channels.find((c) => c.name === authorid);
+      const channel = server.channels.find((c) => c.name === message.author.id);
       if (channel) {
         channel.send(dmembed);
       } else {
-        server.createChannel(authorid, 'text').then((newchannel) => newchannel.send(dmembed));
+        server.createChannel(message.author.id, 'text').then((newchannel) => newchannel.send(dmembed));
       }
       return;
     }

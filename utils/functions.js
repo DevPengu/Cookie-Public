@@ -39,7 +39,7 @@ module.exports = (client) => {
     const newProfile = await new Profile(merged);
     return newProfile.save();
   };
-  
+
   client.getProfile = async (member) => {
     const data = await Profile.findOne({ userID: member.user.id, guildID: member.guild.id });
     if (data) return data;

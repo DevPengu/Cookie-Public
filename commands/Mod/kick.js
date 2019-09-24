@@ -6,7 +6,6 @@ module.exports.run = async (client, message, args, settings) => {
   const botRole = message.guild.members.get(client.user.id).highestRole;
   const userRole = message.guild.members.get(kUser.id).highestRole;
 
-
   const kReason = args.slice(1).join(' ') || 'No reason';
   if (!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send('Nope! You can\'t do that!');
   if (botRole.position < userRole.position) return message.channel.send('My role must be higher than user\'s role!');
