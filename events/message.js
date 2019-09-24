@@ -49,7 +49,6 @@ exports.run = async (client, message) => {
           guildID: message.guild.id,
           money: coinsToAdd,
           cooldown: 0,
-
         });
         newMoney.save().catch((err) => console.log(err));
       } else {
@@ -77,8 +76,10 @@ exports.run = async (client, message) => {
       newXp.save().catch((err) => console.log(err));
     } else {
       xp.xp += xpToAdd;
-      if (xp.xp > xp.xpToLevel) { xp.level += 1; }
-      xp.xpToLevel = xp.xpToLevel + 100 + (25 * xp.level);
+      if (xp.xp > xp.xpToLevel) {
+        xp.level += 1;
+        xp.xpToLevel = xp.xpToLevel + 100 + (25 * xp.level);
+      }
       xp.save().catch((err) => console.log(err));
     }
   });
