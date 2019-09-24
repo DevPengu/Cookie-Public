@@ -35,25 +35,27 @@ exports.run = async (client) => {
   }
 
   // USE ONCE to merge Money and Level into Profile
-  // const { Level, Money } = require('../models);
-  // const testLevel = await Level.find({});
-  // const testMoney = await Money.find({});
+  /*
+  const { Level, Money } = require('../models');
+  const testLevel = await Level.find({});
+  const testMoney = await Money.find({});
 
-  // for (let i = 0; i < testLevel.length; i++) {
-  //   for (let j = 0; j < testMoney.length; j++) {
-  //     if (testLevel[i].userID === testMoney[j].userID && testLevel[i].guildID === testMoney[j].guildID) {
-  //       new Profile({
-  //         userID: testMoney[i].userID,
-  //         guildID: testMoney[i].guildID,
-  //         money: testMoney[i].money,
-  //         cooldown: testMoney[i].cooldown,
-  //         level: testLevel[i].level,
-  //         xp: testLevel[i].xp,
-  //         xpToLevel: testLevel[i].xpToLevel,
-  //       }).save().catch((err) => console.error(err));
-  //       break;
-  //     }
-  //     if (j === testMoney - 1) console.log('nothing found');
-  //   }
-  // }
+  for (let i = 0; i < testLevel.length; i++) {
+    for (let j = 0; j < testMoney.length; j++) {
+      if (testLevel[i].userID === testMoney[j].userID && testLevel[i].guildID === testMoney[j].guildID) {
+        new Profile({
+          userID: testMoney[i].userID,
+          guildID: testMoney[i].guildID,
+          money: testMoney[i].money,
+          cooldown: testMoney[i].cooldown,
+          level: testLevel[i].level,
+          xp: testLevel[i].xp,
+          xpToLevel: testLevel[i].xpToLevel,
+        }).save().catch((err) => console.error(err));
+        break;
+      }
+      if (j === testMoney - 1) console.log('nothing found');
+    }
+  }
+  */
 };
