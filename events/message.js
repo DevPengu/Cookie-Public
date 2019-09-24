@@ -58,6 +58,7 @@ exports.run = async (client, message) => {
       }
     });
   }
+  
 
   // LEVEL CODING
   const xpToAdd = 1;
@@ -77,8 +78,10 @@ exports.run = async (client, message) => {
       newXp.save().catch((err) => console.log(err));
     } else {
       xp.xp += xpToAdd;
-      if (xp.xp > xp.xpToLevel) { xp.level += 1; }
-      xp.xpToLevel = xp.xpToLevel + 100 + (25 * xp.level);
+      if (xp.xp > xp.xpToLevel) {
+        xp.level += 1;
+        xp.xpToLevel = xp.xpToLevel + 100 + (25 * xp.level);
+      }
       xp.save().catch((err) => console.log(err));
     }
   });
