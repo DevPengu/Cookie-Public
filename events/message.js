@@ -21,25 +21,25 @@ exports.run = async (client, message) => {
       }
       return;
     }
-  
+
     const settings = await client.getGuild(message.guild);
-  
+
     const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-  
+
     if (message.content.startsWith(settings.prefix)) {
       const cmd = client.commands.get(command);
       if (!cmd) return;
-  
+
       cmd.run(client, message, args, settings);
     }
-  
+
     const userProfile = await Profile.findOne({ userID: message.author.id, guildID: message.author.id });
     if (!userProfile) await client.createProfile({ userID: message.author.id, guildID: message.guild.id });
     else {
       userProfile.money += 1;
       userProfile.xp += 1;
-  
+
       if (userProfile.xp > userProfile.xpToLevel) {
         userProfile.level += 1;
         userProfile.xpToLevel += 100 + (25 * userProfile.level);
