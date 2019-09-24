@@ -6,12 +6,7 @@ exports.run = async (client, guild) => {
       return;
     }
 
-    const newGuild = {
-      guildID: guild.id,
-      ownerID: guild.ownerID,
-    };
-
-    await client.createGuild(newGuild);
+    await client.createGuild({ guildID: guild.id, ownerID: guild.ownerID });
   } catch (error) {
     console.error(error);
   }
