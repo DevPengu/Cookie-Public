@@ -24,18 +24,21 @@
     "discord.js": "^11.5.1",
     "dotenv": "^8.1.0",
     "dotenv-flow": "^3.1.0",
-    "fs": "0.0.1-security",
     "http-https": "^1.0.0",
     "mongoose": "^5.7.0",
     "nodemon": "^1.19.2",
     "oakdex-pokedex": "^0.4.5",
     "pokedex-api": "^1.1.2",
-    "quick.db": "^7.0.0-b22",
     "quick.hook": "^1.5.1",
     "random-puppy": "^1.1.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "snekfetch": "^4.0.4",
     "superagent": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
   }
 }

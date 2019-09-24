@@ -1,4 +1,4 @@
-const { Money } = require('../../models');
+const { Profile } = require('../../models');
 
 module.exports.run = async (client, message, args) => {
   if (message.member.id !== message.guild.owner.id) return message.reply('Only the owner of the guild can execute this command!');
@@ -8,14 +8,9 @@ module.exports.run = async (client, message, args) => {
   const coinsToAdd = parseInt(args[1], 10);
   if (!coinsToAdd) return message.reply("You didn't tell me how many coins to give ...");
 
-  const userMoney = await Money.findOne({ userID: user.id, guildID: message.guild.id });
+  const userMoney = await Profile.findOne({ userID: user.id, guildID: message.guild.id });
   if (!userMoney) {
-    new Money({
-      userID: user.id,
-      guildID: message.guild.id,
-      money: coinsToAdd,
-      cooldown: 0,
-    }).save().catch((err) => console.error(err));
+    await client.createProfile({ userID: message.author.id, guildID: message.guild.id, money: coinsToAdd });
   } else {
     userMoney.money += coinsToAdd;
     userMoney.save().catch((err) => console.error(err));

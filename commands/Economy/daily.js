@@ -1,26 +1,22 @@
-const { Money } = require('../../models');
+const { Profile } = require('../../models');
 
 module.exports.run = async (client, message, args) => {
   const coinsToAdd = 250;
 
-  const money = await Money.findOne({ userID: message.author.id, guildID: message.guild.id });
-  if (!money) {
-    new Money({
-      userID: message.author.id,
-      guildID: message.guild.id,
-      money: coinsToAdd,
-      cooldown: Date.now() + 86400000,
-    }).save().catch((err) => console.error(err));
+  const userProfile = await Profile.findOne({ userID: message.author.id, guildID: message.guild.id });
+  if (!userProfile) {
+    await client.createProfile({ userID: message.author.id, guildID: message.guild.id, money: coinsToAdd, cooldown: Date.now() + 86400000 });
+
     message.channel.send(`You got ${coinsToAdd} coins!!`).then((msg) => msg.delete(5000));
     return;
   }
-  if (money.cooldown <= Date.now()) {
-    money.money += coinsToAdd;
-    money.cooldown = Date.now() + 86400000;
-    money.save().catch((err) => console.error(err));
+  if (userProfile.cooldown <= Date.now()) {
+    userProfile.money += coinsToAdd;
+    userProfile.cooldown = Date.now() + 86400000;
+    userProfile.save().catch((err) => console.error(err));
     message.channel.send(`You got ${coinsToAdd} couins!!`).then((msg) => msg.delete(5000));
   } else {
-    message.channel.send(`You have already claimed your daily! Come back in ${msToTime(money.cooldown - Date.now())}`);
+    message.channel.send(`You have already claimed your daily! Come back in ${msToTime(userProfile.cooldown - Date.now())}`);
   }
 };
 

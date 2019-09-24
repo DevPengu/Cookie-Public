@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
-const { Money } = require('../../models');
+const { Profile } = require('../../models');
 
 module.exports.run = async (client, message, args, settings) => {
-  const guildMoney = await Money.find({ guildID: message.guild.id }).sort([['money', 'descending']]);
+  const guildMoney = await Profile.find({ guildID: message.guild.id }).sort([['money', 'descending']]);
   const embed = new Discord.RichEmbed()
     .setTitle('Leaderboard');
   if (guildMoney.length === 0) {

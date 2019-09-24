@@ -7,6 +7,7 @@ const guildSchema = mongoose.Schema({
   prefix: String,
   welcomeChannel: String,
   welcomeMsg: String,
+  modLog: String,
   modRole: String,
   adminRole: String,
 });

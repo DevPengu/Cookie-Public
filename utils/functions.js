@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Guild } = require('../models');
+const { Guild, Profile } = require('../models');
 
 module.exports = (client) => {
   client.getGuild = async (guild) => {
@@ -28,6 +28,14 @@ module.exports = (client) => {
     const newGuild = await new Guild(merged);
     return newGuild.save()
       .then(console.log(`Default settings saved for guild (${merged.guildID})`));
+  };
+
+  client.createProfile = async (settings) => {
+    const defaults = { money: 1, cooldown: 0, xp: 1, level: 1, xpToLevel: 100 };
+    const merged = Object.assign(defaults, settings);
+
+    const newProfile = await new Profile(merged);
+    return newProfile.save();
   };
 
   client.clean = (text) => {
