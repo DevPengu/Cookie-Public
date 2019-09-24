@@ -49,7 +49,6 @@ exports.run = async (client, message) => {
           guildID: message.guild.id,
           money: coinsToAdd,
           cooldown: 0,
-
         });
         newMoney.save().catch((err) => console.log(err));
       } else {
